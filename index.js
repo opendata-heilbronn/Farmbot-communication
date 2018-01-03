@@ -20,7 +20,7 @@ port.on('error', function (err) {
     console.log('Error: ', err.message);
 });
 port.on("data", (data) => {
-    console.log(data);
+    console.log(data.toString());
 });
 setInterval(() => {
     sendCommand(testcode.movex);
