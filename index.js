@@ -12,7 +12,7 @@ const port = new SerialPort('/dev/ttyACM0', {
 });
 
 rl.on('line', (input) => {
-    if (input = 'testcode') {
+    if (input === 'testcode') {
         sendCommand(testcode.movex);
     }
     else if (input[0] === 'F' || input[0] === 'G') {
