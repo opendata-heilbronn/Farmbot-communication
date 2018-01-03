@@ -15,7 +15,7 @@ rl.on('line', (input) => {
     if (input === 'testcode') {
         sendCommand(testcode.movex);
     }
-    else if (input[0] === 'F' || input[0] === 'G') {
+    else if (input[0] === 'F' || input[0] === 'G' || input[0] === 'e') {
         sendCommand('\n' + input);
     }
     else console.log('"' + input + '"' + 'is not a valid command!')
