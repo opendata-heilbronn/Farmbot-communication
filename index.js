@@ -36,6 +36,3 @@ port.on('error', function (err) {
 port.on("data", (data) => {
     console.log(data.toString());
 });
-
-
-setInterval(() => , 10000);
