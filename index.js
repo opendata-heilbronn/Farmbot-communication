@@ -12,13 +12,6 @@ const port = new SerialPort('/dev/ACM0', {
     baudRate: 115200
 });
 
-let x;
-
-while (x) {
-    console.info(port.info);
-    x = false;
-};
-
 rl.on('line', (input) => {
     if (input === 'testcode') {
         sendCommand(testcode.movex);
