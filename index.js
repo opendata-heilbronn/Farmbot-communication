@@ -1,15 +1,23 @@
 const SerialPort = require('serialport');
 const testcode = require('./testcode');
 const readline = require('readline');
+const Console = require('Console');
 
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
 
-const port = new SerialPort('/dev/ttyACM0', {
+const port = new SerialPort('/dev/ACM0', {
     baudRate: 115200
 });
+
+let x;
+
+while (x) {
+    console.info(port.info);
+    x = false;
+};
 
 rl.on('line', (input) => {
     if (input === 'testcode') {
@@ -18,21 +26,22 @@ rl.on('line', (input) => {
     else if (input[0] === 'F' || input[0] === 'G' || input[0] === 'e') {
         sendCommand('\n' + input);
     }
-    else console.log('"' + input + '"' + 'is not a valid command!')
+    else Console.error('"' + input + '"' + 'is not a valid command!')
 });
 
 function sendCommand(command) {
     port.write(command, function (err) {
+        console.stress(command + ' will be send')
         if (err) {
-            return console.log('Error on write: ', err.message);
+            return console.error('Error on write: ', err.message);
         }
-        else console.log('message written');
+        else console.success('message written');
     });
 };
 
 port.on('error', function (err) {
-    console.log('Error: ', err.message);
+    console.error('Error: ', err.message);
 });
 port.on("data", (data) => {
-    console.log(data.toString());
+    console.debug(data.toString());
 });

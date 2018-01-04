@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/opendata-heilbronn/Farmbot-communication#readme",
   "dependencies": {
+    "Console": "^1.1.0",
+    "console": "^0.6.4",
     "serialport": "^6.0.4"
   }
 }
